@@ -677,8 +677,7 @@ export default {
       let title = this.getTitle(field)
 
       if (title.length > 0 && this.isInCurrentSortGroup(field) || this.hasSortableIcon(field)) {
-        let style = `opacity:${this.sortIconOpacity(field)};position:relative;float:right`
-        let iconTag = this.showSortIcons ? this.renderIconTag(['sort-icon', this.sortIcon(field)], `style="${style}"`) : ''
+        let iconTag = this.showSortIcons ? this.renderIconTag(['sort-icon', this.sortIcon(field)]) : ''
         return title + ' ' + iconTag
       }
 
@@ -1292,53 +1291,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-  [v-cloak] {
-    display: none;
-  }
-  .vuetable th.sortable:hover {
-    color: #2185d0;
-    cursor: pointer;
-  }
-  .vuetable-body-wrapper {
-    position:relative;
-    overflow-y:auto;
-  }
-  .vuetable-head-wrapper {
-    overflow-x: hidden;
-  }
-  .vuetable-actions {
-    width: 15%;
-    padding: 12px 0px;
-    text-align: center;
-  }
-  .vuetable-pagination {
-    background: #f9fafb !important;
-  }
-  .vuetable-pagination-info {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  .vuetable-empty-result {
-    text-align: center;
-  }
-  .vuetable-clip-text {
-    white-space: pre-wrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: block;
-  }
-  .vuetable-semantic-no-top {
-    border-top:none !important;
-    margin-top:0 !important;
-  }
-  .vuetable-fixed-layout {
-    table-layout: fixed;
-  }
-  .vuetable-gutter-col {
-    padding: 0 !important;
-    border-left: none  !important;
-    border-right: none  !important;
-  }
-</style>
