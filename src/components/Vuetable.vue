@@ -631,6 +631,7 @@ export default {
             title: (field.title === undefined) ? self.setTitle(field.name) : field.title,
             sortField: field.sortField,
             titleClass: (field.titleClass === undefined) ? '' : field.titleClass,
+            titleTooltip: field.titleTooltip,
             dataClass: (field.dataClass === undefined) ? '' : field.dataClass,
             callback: (field.callback === undefined) ? '' : field.callback,
             visible: (field.visible === undefined) ? true : field.visible,
@@ -675,13 +676,11 @@ export default {
     },
     renderTitle (field) {
       let title = this.getTitle(field)
-
+      let html = (field.titleTooltip === undefined ? '<span>' : '<span title="' + field.titleTooltip + '">') + title + '</span>'
       if (title.length > 0 && this.isInCurrentSortGroup(field) || this.hasSortableIcon(field)) {
-        let iconTag = this.showSortIcons ? this.renderIconTag(['sort-icon', this.sortIcon(field)]) : ''
-        return '<span>' + title + '</span> ' + ' ' + iconTag
+        html += ' ' + (this.showSortIcons ? this.renderIconTag(['sort-icon', this.sortIcon(field)]) : '')
       }
-
-      return '<span>' + title + '</span>'
+      return html
     },
     renderSequence (index) {
       return this.tablePagination
