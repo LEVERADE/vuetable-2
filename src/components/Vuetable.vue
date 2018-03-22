@@ -678,10 +678,10 @@ export default {
 
       if (title.length > 0 && this.isInCurrentSortGroup(field) || this.hasSortableIcon(field)) {
         let iconTag = this.showSortIcons ? this.renderIconTag(['sort-icon', this.sortIcon(field)]) : ''
-        return title + ' ' + iconTag
+        return '<span>' + title + '</span> ' + ' ' + iconTag
       }
 
-      return title
+      return '<span>' + title + '</span>'
     },
     renderSequence (index) {
       return this.tablePagination
