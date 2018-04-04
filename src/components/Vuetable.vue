@@ -106,7 +106,7 @@
                     :class="['vuetable-component', field.dataClass]"
                   >
                     <component :is="extractArgs(field.name)"
-                      :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
+                      :row-data="item" :row-index="itemIndex" :row-field="field.sortField" :row-meta="field.meta"
                     ></component>
                   </td>
                   <td v-if="extractName(field.name) === '__slot'" 
@@ -114,7 +114,7 @@
                     :class="['vuetable-slot', field.dataClass]"
                   >
                     <slot :name="extractArgs(field.name)"
-                      :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
+                      :row-data="item" :row-index="itemIndex" :row-field="field.sortField" :row-meta="field.meta"
                     ></slot>
                   </td>
                 </template>
@@ -246,7 +246,7 @@
                 :class="['vuetable-component', field.dataClass]"
               >
                 <component :is="extractArgs(field.name)"
-                  :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
+                  :row-data="item" :row-index="itemIndex" :row-field="field.sortField" :row-meta="field.meta"
                 ></component>
               </td>
               <td v-if="extractName(field.name) === '__slot'" 
@@ -254,7 +254,7 @@
                 :class="['vuetable-slot', field.dataClass]"
               >
                 <slot :name="extractArgs(field.name)"
-                  :row-data="item" :row-index="itemIndex" :row-field="field.sortField"
+                  :row-data="item" :row-index="itemIndex" :row-field="field.sortField" :row-meta="field.meta"
                 ></slot>
               </td>
             </template>
@@ -635,6 +635,7 @@ export default {
             dataClass: (field.dataClass === undefined) ? '' : field.dataClass,
             callback: (field.callback === undefined) ? '' : field.callback,
             visible: (field.visible === undefined) ? true : field.visible,
+            meta: field.meta
           }
         }
         self.tableFields.push(obj)
